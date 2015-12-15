@@ -25,4 +25,5 @@ xdebug:
     install: '1'
 composer:
     install: '1'
-
+app:
+    key: mykeytest
