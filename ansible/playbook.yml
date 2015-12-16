@@ -6,9 +6,11 @@
   roles:
     - server
     - vagrant_local
+    - zero_mq
     - nginx
     - mysql
     - php
     - xdebug
     - composer
     - app
+    - supervisor

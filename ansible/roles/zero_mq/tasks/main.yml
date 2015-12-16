@@ -10,7 +10,3 @@
 - name: Install libzmq3-dev
   sudo: yes
   apt: pkg=libzmq3-dev state=latest
-
-- name: Install zmq-beta
-  sudo: yes
-  shell: pecl install zmq-beta

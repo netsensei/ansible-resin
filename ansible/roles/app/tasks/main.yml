@@ -4,24 +4,18 @@
 # - name: Install git
 #  apt: name=git state=latest
 
-#- name: Clone Collective Access
+#- name: Clone Resin
   # git: >
   #  repo=https://github.com/collectiveaccess/providence
   #  dest=/vagrant
   #  update=no
 
 - name: Configure database.php
-  template: src=env.tpl dest=/.env
+  template: src=env.tpl dest=/vagrant/.env
 
+- name: Set permissions on storage/upload
+  command: chmod +w /vagrant/storage
 
-
-
-- name: Configure setup.php
+- name: Run artisan migrate
+  shell: php /vagrant/artisan migrate --force
   sudo: yes
-  template: src=setup.tpl dest=/vagrant/setup.php
-
-- name: Set permissions on app/tmp
-  command: chmod +w /vagrant/app/tmp
-
-- name: Set permissions on vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache
-  command: chmod +w /vagrant/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache

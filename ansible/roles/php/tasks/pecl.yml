@@ -20,7 +20,14 @@
   with_items: php.pecl_packages
   when: php.pecl_packages is defined
 
+# TEMP FIX: should be removed!
+# see: https://github.com/phansible/phansible/issues/262
+- name: rename zmq.so
+  sudo: yes
+  shell: mv /usr/lib/php5/20131226/zmq.so /usr/lib/php5/20131226/zmq-beta.so
+
 - name: Enable extension
   shell: php5enmod {{ item }}
   with_items: php.pecl_packages
   when: php.pecl_packages is defined
+

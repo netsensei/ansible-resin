@@ -25,10 +25,10 @@ end
 Vagrant.configure("2") do |config|
 
     config.vm.provider :virtualbox do |v|
-        v.name = "collectiveaccess"
+        v.name = "resin"
         v.customize [
             "modifyvm", :id,
-            "--name", "collectiveaccess",
+            "--name", "resin",
             "--memory", 512,
             "--natdnshostresolver1", "on",
             "--cpus", 1,
@@ -36,8 +36,8 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.box = "ubuntu/trusty64"
-    
-    config.vm.network :private_network, ip: "192.168.2.145"
+
+    config.vm.network :private_network, ip: "192.168.2.146"
     config.ssh.forward_agent = true
 
     # If ansible is in your path it will provision from your HOST machine
@@ -49,8 +49,8 @@ Vagrant.configure("2") do |config|
             ansible.limit = 'all'
         end
     else
-        config.vm.provision :shell, path: "ansible/windows.sh", args: ["collectiveaccess"]
+        config.vm.provision :shell, path: "ansible/windows.sh", args: ["resin"]
     end
 
-    config.vm.synced_folder "~/workspace/collective_access", "/vagrant", type: "nfs"
+    config.vm.synced_folder "~/workspace/resin", "/vagrant", type: "nfs"
 end

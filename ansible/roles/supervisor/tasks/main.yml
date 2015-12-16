@@ -1,0 +1,14 @@
+- name: Install supervisor
+  sudo: yes
+  apt: pkg=supervisor state=latest
+  notify: restart supervisor
+
+- name: Install workers
+  sudo: yes
+  template: src=worker.tpl dest=/etc/supervisor/conf.d/{{ item.name }}.conf
+  notify:
+    - reread supervisor
+    - update supervisor
+  with_items:
+    - { name: wamp-notifications, command: "php /vagrant/artisan wamp:notifications" }
+    - { name: laravel-worker, command: "php /vagrant/artisan queue:work --sleep=3 --tries=3 --daemon" }
