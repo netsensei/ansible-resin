@@ -1,15 +1,15 @@
-# Ansible provisioning for CollectiveAccess
+# Ansible provisioning for Resin
 
-[![Latest Version](https://img.shields.io/github/release/netsensei/ansible-collectiveaccess.svg?style=flat-square)](https://github.com/netsensei/ansible-collectiveaccess/releases)
+[![Latest Version](https://img.shields.io/github/release/netsensei/resin.svg?style=flat-square)](https://github.com/netsensei/resin/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-## Ansible provisioning for CollectiveAccess
+## Ansible provisioning for Resin
 
-This project provides [Ansible](http://www.ansible.com) provisinioning for easy/quick installation and configuration of a [CollectiveAccess](http://collectiveaccess.org/) instance.
+This project provides [Ansible](http://www.ansible.com) provisinioning for easy/quick installation and configuration of a [Resin](http://github.com/netsensei/resin/) instance.
 
-### What is CollectiveAccess?
+### What is Resin?
 
-[CollectiveAccess](http://collectiveaccess.org/) is webbased software for describing all manner of things, and allows you to create catalogues that closely conform to your needs without custom programming.
+[Resin](http://github.com/netsensei/resin/) is Laravel backed / Bootstrap supported tool which automates the generation import files for the [Resolver](https://github.com/PACKED-vzw/resolver) tool. This way, it abstracts the concerns that data managers otherwise have to manually deal with in spreadsheet applications.
 
 ### Requirements
 
@@ -22,6 +22,7 @@ You will need a working installation of [Vagrant](https://www.vagrantup.com/) an
 - NGinX based
 - PHP 5.6 with a few required extensions
 - MySQL database
+- 0MQ via a PHP binding
 
 ## Install
 
@@ -29,25 +30,25 @@ Clone this repository to your local machine (we assume you have a dedicated work
 
 ```bash
 cd ~/Workspace
-git clone https://github.com/netsensei/ansible-collectiveaccess
+git clone https://github.com/netsensei/ansible-resin ~/Workspace
 ```
 
-Also, clone the [Providence](https://github.com/collectiveaccess/providence) repository to your Workspace folder
+Also, clone the [Resin](http://github.com/netsensei/resin/) repository to your Workspace folder.
 
 ```bash
-git clone https://github.com/collectiveaccess/providence
+git clone https://github.com/netsensei/resin ~/workspace
 ```
 
-Now, go back to the Ansible folder and start Vagrant. Ansible should automatically start provisioning the box with all the necessary dependencies for CollectiveAccess.
+Now, go back to the Ansible folder and start Vagrant. Ansible should automatically start provisioning the box with all the necessary dependencies for Resin.
 
 ```bash
-cd ~/Workspace/ansible-collectiveaccess
+cd ~/Workspace/ansible-resin
 vagrant up
 ```
 
 ## Usage
 
-Out of the box, NGinX listens on IP address `192.168.2.145`. Alternatively, you could create an entry in your `/etc/hosts` file that points to `collectiveaccess.local`.
+Out of the box, NGinX listens on IP address `192.168.2.146`. Alternatively, you could create an entry in your `/etc/hosts` file that points to `resin.app`.
 
 Open up your browser and navigate to either the IP address or the local domain. First time, you will be welcomed by the Providence installer.
 
